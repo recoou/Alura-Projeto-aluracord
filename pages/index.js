@@ -1,39 +1,10 @@
-import {Box, Button, Text, TextField, Image} from '@skynexui/components'
-import Fundo from '../imagens/LoFi_Background.jpg'
+import React, {useState} from 'react';
+import {Box, Button, Text, TextField, Image} from '@skynexui/components';
+import Fundo from '../imagens/LoFi_Background.jpg';
+import {useRouter} from 'next/router';
 
 import appConfig from "../config.json"; 
 import { urlObjectKeys } from 'next/dist/shared/lib/utils';
-
-function GlobalStyle(){
-    return(
-        <style global jsx>{`
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                list-style:none;
-            }
-
-            body {
-                font-family: 'Open Sans', sans-serif;
-            }
-            /* App fit Height */
-            html, body, #__next {
-                min-height: 100vh;
-                display: flex;
-                flex: 1;
-            }
-            #__next {
-                flex: 1;
-            }
-            #__next > *{
-                flex: 1;
-            }
-            /* ./App fit Height */
-        `}</style>
-    );
-}
-
 
 function Titulo(props){
     const Tag = props.tag || "h1";
@@ -72,11 +43,12 @@ function Titulo(props){
 // }
 
 export default function PaginaInicial() {
-    const username = 'recoou';
+    //const username = 'recoou';
+    const [username, setUsername] = useState('recoou');
+    const roteamento = useRouter();
   
     return (
-      <>
-        <GlobalStyle />
+      <>        
         <Box
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -108,6 +80,11 @@ export default function PaginaInicial() {
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                 width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
               }}
+              onSubmit={(evento) =>{
+                evento.preventDefault()
+                console.log("Submeteram o Form")
+                roteamento.push("/chat");
+              }}
             >
               <Titulo tag="h2">Bem Vindo ao LoFi Hip Hop Verso</Titulo>
               <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[300] }}>
@@ -123,6 +100,11 @@ export default function PaginaInicial() {
                     mainColorHighlight: appConfig.theme.colors.violet[600],
                     backgroundColor: appConfig.theme.colors.neutrals[800],
                   },
+                }}
+                value={username}
+                onChange={(evento) => {
+                  setUsername(evento.target.value);
+                  console.log(username);
                 }}
               />
               <Button
