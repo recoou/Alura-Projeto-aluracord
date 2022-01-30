@@ -1,6 +1,8 @@
 import {Box, Button, Text, TextField, Image} from '@skynexui/components'
+import Fundo from '../imagens/LoFi_Background.jpg'
 
 import appConfig from "../config.json"; 
+import { urlObjectKeys } from 'next/dist/shared/lib/utils';
 
 function GlobalStyle(){
     return(
@@ -41,7 +43,8 @@ function Titulo(props){
             <style jsx>{`
 
                 ${Tag}{
-                    color: ${appConfig.theme.colors.neutrals["000"]};
+                    //color: ${appConfig.theme.colors.neutrals["000"]};
+                    color: orange;
                     font-size: 24px;
                     font-weight: 600;
                 }
@@ -77,8 +80,8 @@ export default function PaginaInicial() {
         <Box
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            backgroundColor: appConfig.theme.colors.primary[500],
-            backgroundImage: 'url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)',
+            backgroundColor: appConfig.theme.colors.neutrals["400"],
+            backgroundImage: "url('https://wallpapercave.com/wp/wp2337073.jpg')",
             backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
           }}
         >
@@ -94,7 +97,8 @@ export default function PaginaInicial() {
               width: '100%', maxWidth: '700px',
               borderRadius: '5px', padding: '32px', margin: '16px',
               boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
-              backgroundColor: appConfig.theme.colors.neutrals[700],
+              backgroundColor: appConfig.theme.colors.primary["deepSpace"],
+              opacity: 0.75,
             }}
           >
             {/* Formulário */}
@@ -105,7 +109,7 @@ export default function PaginaInicial() {
                 width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
               }}
             >
-              <Titulo tag="h2">Boas vindas de volta!</Titulo>
+              <Titulo tag="h2">Bem Vindo ao LoFi Hip Hop Verso</Titulo>
               <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[300] }}>
                 {appConfig.name}
               </Text>
@@ -114,9 +118,9 @@ export default function PaginaInicial() {
                 fullWidth
                 textFieldColors={{
                   neutral: {
-                    textColor: appConfig.theme.colors.neutrals[200],
-                    mainColor: appConfig.theme.colors.neutrals[900],
-                    mainColorHighlight: appConfig.theme.colors.primary[500],
+                    textColor: appConfig.theme.colors.violet[200],
+                    mainColor: appConfig.theme.colors.violet[500],
+                    mainColorHighlight: appConfig.theme.colors.violet[600],
                     backgroundColor: appConfig.theme.colors.neutrals[800],
                   },
                 }}
@@ -127,9 +131,9 @@ export default function PaginaInicial() {
                 fullWidth
                 buttonColors={{
                   contrastColor: appConfig.theme.colors.neutrals["000"],
-                  mainColor: appConfig.theme.colors.primary[500],
-                  mainColorLight: appConfig.theme.colors.primary[400],
-                  mainColorStrong: appConfig.theme.colors.primary[600],
+                  mainColor: appConfig.theme.colors.violet[600],
+                  mainColorLight: appConfig.theme.colors.violet[500],
+                  mainColorStrong: appConfig.theme.colors.violet[700],
                 }}
               />
             </Box>
